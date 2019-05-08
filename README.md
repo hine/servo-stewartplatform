@@ -22,6 +22,8 @@
 - [ヴイストン株式会社](https://www.vstone.co.jp/)のArduino互換ロボットコントロール基板「[V-duino](https://www.vstone.co.jp/robotshop/index.php?main_page=product_info&products_id=5039)」を採用。
 - [V-Sido CONNECT RC](https://www.asratec.co.jp/products/v-sido-connect/v-sido-connect-rc/)で用いられているV-Sidoプロトコル互換のソフトウェアを実装済み。IK（Inverse Kinematics）指令のみで動かすことが可能
 
+***一言で言うと、誰でも比較的安価に作れて、簡単に動かすことができます。***
+
 ___
 
 ## このロボットを用いた作例
