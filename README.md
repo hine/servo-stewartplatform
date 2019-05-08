@@ -5,6 +5,10 @@
 
 <img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_image_1.jpg?raw=true" alt="Stewertplatform Robot" width="200px">
 
+2017年にはフランス・ツールーズで開催された「FABLAB FESTIVAL 2017」で、展示・デモンストレーションを行いました。
+
+<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_image_2.jpg?raw=true" alt="Stewertplatform Robot" width="200px">
+
 ## スチュワートプラットフォームの特徴
 
 スチュワートプラットフォームは、アミューズメントパークのライドアトラクションの動く座席などにも用いられている構造です。
