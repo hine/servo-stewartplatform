@@ -3,11 +3,11 @@
 ## これは何？
 本来は直動アクチュエータを用いて作る[スチュワートプラットフォーム](https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%81%E3%83%A5%E3%83%AF%E3%83%BC%E3%83%88%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0)をサーボモータで近似して動作するように作ったロボットです。
 
-<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_image_1.jpg?raw=true" alt="Stewertplatform Robot" width="200px">
+<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_image_1.jpg?raw=true" alt="Stewertplatform Robot" width="400px">
 
 2017年にはフランス・ツールーズで開催された「FABLAB FESTIVAL 2017」で、展示・デモンストレーションを行いました。
 
-<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_image_2.jpg?raw=true" alt="Stewertplatform Robot" width="200px">
+<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_image_2.jpg?raw=true" alt="Stewertplatform Robot" width="400px">
 
 ## スチュワートプラットフォームの特徴
 
@@ -38,7 +38,7 @@ LeapMotionを用いて手の傾きを検知、プラットフォームの上に�
 
 Global Game Jamの開場の一つである「[電子デバイスGGJ](https://game-creators.jp/column/11255/)」で制作され、[NT広島](http://wiki.nicotech.jp/nico_tech/index.php?NT%E5%BA%83%E5%B3%B62019)などでも展示されました。
 
-<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_application_1.jpg?raw=true" alt="Stewrtplatform Maze" width="200px">
+<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_application_1.jpg?raw=true" alt="Stewrtplatform Maze" width="400px">
 
 [実際に遊んでくれた映像](https://twitter.com/KKKKKKKKKULA/status/1091569659827019782)（※他の方のTwitterへのツイートへのリンクです。）
 
@@ -46,7 +46,7 @@ Global Game Jamの開場の一つである「[電子デバイスGGJ](https://gam
 
 スチュワートプラットフォームロボットを横向きに用いて、操縦者の手につけたセンサーで手の傾きを検知、プラットフォーム先につけたハンドを同じように動かすデモです。
 
-<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_application_2.jpg?raw=true" alt="Stewrtplatform Maze" height="200px">
+<img src="https://github.com/hine/servo-stewartplatform/blob/images/sp_application_2.jpg?raw=true" alt="Stewrtplatform Maze" height="400px">
 
 [動作動画](https://youtu.be/wbBaG8WA2ME)
 
