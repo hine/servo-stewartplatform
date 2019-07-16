@@ -6,10 +6,6 @@ Ticker ticker;
 // シリアル通信のための設定
 #define SERIAL_BAUDRATE 115200
 
-// スチュワートプラットフォームの可動範囲の設定（V-Sidoからの変換に必要）
-#define SP_MAX_DISTANCE 50
-#define SP_MAX_ANGLE 30
-
 // ロボットの状態変化のFPS
 #define ROBOT_FPS 25
 
