@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map StewartPlatform
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+StewartPlatform KEYWORD1	StewartPlatform
+RobotBodyConfig KEYWORD1    StewartPlatform
+ServoControler  KEYWORD1    StewartPlatform
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init    KEYWORD2
+changeState KEYWORD2
+setIK   KEYWORD2
+setParameters   KEYWORD2
+setParameters   KEYWORD2
+changeState KEYWORD2
+setTargetAngle  KEYWORD2
+getVsid KEYWORD2
+getReverse  KEYWORD2
+getOffset   KEYWORD2
+getCurrentAngle KEYWORD2
+getTargetAngle  KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
