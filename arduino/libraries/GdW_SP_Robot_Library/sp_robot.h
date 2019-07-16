@@ -73,6 +73,7 @@ class StewartPlatform {
     StewartPlatform();
     void init(float);
     void changeState();
+    void setServoAngle(uint8_t, float, uint16_t);
     void setIK(float, float, float, float, float, float, int16_t);
   private:
     float calculatePlatformZHome_(float);

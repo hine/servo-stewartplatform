@@ -193,6 +193,19 @@ void StewartPlatform::changeState() {
 }
 
 /**
+ * サーボ単体で角度指示を送りサーボを動かす
+ * 
+ * @param vsid[uint8_t] サーボID(V-duinoのサーボ番号)
+ * @param angle[float] 目標角度(角度) ※(ラジアン)でないことに注意
+ * @param moving_time[uint16_t] 移動にかける時間(ms)
+ */
+void StewartPlatform::setServoAngle(uint8_t visd, float angle, uint16_t moving_time) {
+  if (is_initialized_) {
+    servo_controler_[sid].setTargetAngle(radians(constrain(angle, SERVO_ANGLE_LIMIT_MIN, SERVO_ANGLE_LIMIT_MAX)), moving_time);
+  }
+}
+
+/**
  * IKで位置と姿勢を指示する
  * 
  * @param pos_x[float] 目標位置のx軸位置(mm)
