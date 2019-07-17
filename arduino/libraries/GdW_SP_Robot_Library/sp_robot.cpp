@@ -153,18 +153,21 @@ void StewartPlatform::init(float fps) {
   setServoMode(0); // オーバーライドモードに（次の命令が来たら即時変更する）
 
   // サーボ初期化  
-  servo_controler_[0].setParameters(1, -1, robot_body_config_.servo1_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
-  servo_controler_[1].setParameters(2, 1, robot_body_config_.servo2_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
-  servo_controler_[2].setParameters(3, -1, robot_body_config_.servo3_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
-  servo_controler_[3].setParameters(4, 1, robot_body_config_.servo4_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
-  servo_controler_[4].setParameters(5, -1, robot_body_config_.servo5_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
-  servo_controler_[5].setParameters(6, 1, robot_body_config_.servo6_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
+  sp_servo_[0].setParameters(1, -1, robot_body_config_.servo1_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
+  sp_servo_[1].setParameters(2, 1, robot_body_config_.servo2_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
+  sp_servo_[2].setParameters(3, -1, robot_body_config_.servo3_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
+  sp_servo_[3].setParameters(4, 1, robot_body_config_.servo4_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
+  sp_servo_[4].setParameters(5, -1, robot_body_config_.servo5_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
+  sp_servo_[5].setParameters(6, 1, robot_body_config_.servo6_offset, SERVO_ROTATION_MIN, SERVO_ROTATION_MAX, fps_);
+
 
   for (uint8_t sid = 0; sid < 6; sid++) {
     // vsidごとにサーボのオフセットをセットする
-    setServoOffset(servo_controler_[sid].getVsid(), servo_controler_[sid].getOffset());
+    setServoOffset(sp_servo_[sid].getVsid(), sp_servo_[sid].getOffset());
     // vsidごとにサーボへのPWM出力を可能にする
-    servoEnable(servo_controler_[sid].getVsid(), 1);
+    servoEnable(sp_servo_[sid].getVsid(), 1);
+    // vsidからの逆引きテーブル作成
+    vsid_table[sp_servo_[sid].getVsid()] = sid;
   }
 
   // 初期化済みフラグを立てる
@@ -184,8 +187,8 @@ void StewartPlatform::changeState() {
     int next_position[7];
     next_position[0] = int(1000 / fps_); // 
     for (uint8_t sid = 0; sid < 6; sid++) {
-      servo_controler_[sid].changeState();
-      next_position[sid + 1] = int(servo_controler_[sid].getCurrentAngle() * RAD2DEG * servo_controler_[sid].getReverse() * SERVO_ANGLE_RATIO);
+      sp_servo_[sid].changeState();
+      next_position[sid + 1] = int(sp_servo_[sid].getCurrentAngle() * RAD2DEG * sp_servo_[sid].getReverse() * SERVO_ANGLE_RATIO);
     }
     setMotion(next_position, 6);
     moveServo();
@@ -201,7 +204,7 @@ void StewartPlatform::changeState() {
  */
 void StewartPlatform::setServoAngle(uint8_t visd, float angle, uint16_t moving_time) {
   if (is_initialized_) {
-    servo_controler_[sid].setTargetAngle(radians(constrain(angle, SERVO_ANGLE_LIMIT_MIN, SERVO_ANGLE_LIMIT_MAX)), moving_time);
+    sp_servo_[vsid_table[visd]].setTargetAngle(radians(constrain(angle, SERVO_ANGLE_LIMIT_MIN, SERVO_ANGLE_LIMIT_MAX)), moving_time);
   }
 }
 
@@ -231,7 +234,7 @@ void StewartPlatform::setIK(float pos_x, float pos_y, float pos_z, float rot_x, 
   
     // 各サーボの角度を求める
     for (int8_t sid = 0; sid < 6; sid++) {
-      servo_controler_[sid].setTargetAngle(calculateServoRotationAngle_(sid, BASE_LINK_POINTS[sid], target_position[sid]), moving_time);
+      sp_servo_[sid].setTargetAngle(calculateServoRotationAngle_(sid, BASE_LINK_POINTS[sid], target_position[sid]), moving_time);
     }
   }
 }
@@ -319,7 +322,7 @@ float StewartPlatform::calculateServoRotationAngle_(int8_t sid, const float base
   double min = SERVO_ROTATION_MIN;
   double max = SERVO_ROTATION_MAX;
 
-  angle = servo_controler_[sid].getCurrentAngle();
+  angle = sp_servo_[sid].getCurrentAngle();
   while (counter < 25) {
     // ベースの接続点の計算
     target_base_position[0] = SERVO_ARM_LENGTH * cos(angle) * cos(SERVO_ARM_DIRECTIONS[sid]) + base_position[0]; // x

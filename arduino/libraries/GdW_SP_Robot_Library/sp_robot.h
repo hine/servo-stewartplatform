@@ -68,7 +68,8 @@ class StewartPlatform {
     float ik_data_[6];
     float servo_angle_[6];
     RobotBodyConfig robot_body_config_;
-    ServoControler servo_controler_[6];
+    ServoControler sp_servo_[6];
+    int8_t vsid_table[11];
   public:
     StewartPlatform();
     void init(float);
